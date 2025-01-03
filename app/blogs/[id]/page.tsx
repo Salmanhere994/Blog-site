@@ -1,13 +1,17 @@
 import Image from 'next/image'
 import { getBlogPost } from '../../../lib/api'
 import Comments from '../../../components/Comments'
+import { PageProps } from '@/.next/types/app/layout'
 
-export default function BlogPost({ params }: { params: { id: string } }) {
+
+
+export default function BlogPost({ params }: { params: { id: string } } & PageProps) {
   const post = getBlogPost(params.id)
 
   if (!post) {
     return <div>Post not found</div>
   }
+
 
   return (
     <article className="max-w-4xl mx-auto">
@@ -26,7 +30,7 @@ export default function BlogPost({ params }: { params: { id: string } }) {
           <span>5 min read</span>
           <span>•</span>
           <span>Tech</span>
-          <span>•</span>
+          <span>•</span> 
           <span>Aug 15, 2023</span>
         </div>
         <div className="prose prose-neutral max-w-none">
